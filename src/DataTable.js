@@ -15,8 +15,17 @@ import {
 
 import { ListView } from 'realm/react-native';
 
-export class DataTable extends React.Component {
-  constructor(props) {
+export interface IDataTableProps {
+  style: StyleSheet;
+  renderHeader: ()m=> {} | any;
+  dataSource: object;
+  renderRow: ()m=> {} | any;
+  showsVerticalScrollIndicator: boolean;
+  scrollRenderAheadDistance: number;
+}
+
+export class DataTable extends React.Component<IDataTableProps, {}> {
+  constructor(props: IDataTableProps) {
     super(props);
     this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
   }
