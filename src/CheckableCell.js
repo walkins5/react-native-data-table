@@ -13,6 +13,21 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+export interface ICheckableCellProps {
+  style: StyleSheet;
+  width: number;
+  onPress: () => {} | any;
+  renderDisabled: () => {} | any;
+  renderIsChecked: () => {} | any;
+  renderIsNotChecked: () => {} | any;
+  isChecked: boolean;
+  isDisabled: boolean;
+}
+
+export interface ICheckableCellState {
+  isChecked: boolean;
+}
+
 /**
  * Renders a CheckableCell that renders either renderIsChecked or renderIsNotChecked when isChecked
  * is true or false respectively. Whole cell returned is pressable. Callback should affect state of
@@ -29,16 +44,16 @@ import {
  * @return  {React.Component}           Return TouchableOpacity with child rendered according to the
  *                                      above 3 props.
  */
-export class CheckableCell extends React.Component {
-  constructor(props) {
+export class CheckableCell extends React.Component<ICheckableCellProps, ICheckableCellState> {
+  constructor(props: ICheckableCellProps) {
     super(props);
     this.state = {
-      isChecked: props.isChecked,
+      isChecked: props.isChecked
     };
     this.onPress = this.onPress.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: ICheckableCellProps) {
     if (nextProps.isChecked !== this.state.isChecked) {
       this.setState({ isChecked: nextProps.isChecked });
     }
