@@ -13,6 +13,13 @@ import {
   View,
 } from 'react-native';
 
+export interfaceCellProps {
+    style: StyleSheet;
+    textStyle: StyleSheet;
+    width: number;
+    text: string;
+    numberOfLines: number;
+}
 /**
  * Renders a Cell that supports having a string as children, or any component.
  * @param   {object}  props         Properties passed where component was created.
