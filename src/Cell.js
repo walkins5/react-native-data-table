@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 
-export interfaceCellProps {
+export interface ICellProps {
     style: StyleSheet;
     textStyle: StyleSheet;
     width: number;
@@ -29,7 +29,7 @@ export interfaceCellProps {
  * @prop    {string}  text          Text to render in Cell
  * @return  {React.Component}       A single View with children
  */
-export function Cell(props) {
+export function Cell(props: ICellProps) {
   const { style, numberOfLines, textStyle, width, children, ...viewProps } = props;
 
   // Render string child in a Text Component
